@@ -1,0 +1,33 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: player-service
+            uri: ${PLAYER_SERVICE_URL:http://localhost:8081}
+            predicates:
+              - Path=/api/players/**
+          - id: tournament-service
+            uri: ${TOURNAMENT_SERVICE_URL:http://localhost:8082}
+            predicates:
+              - Path=/api/tournaments/**
+          - id: ranking-service
+            uri: ${RANKING_SERVICE_URL:http://localhost:8083}
+            predicates:
+              - Path=/api/rankings/**
+
+services:
+  player-service:
+    url: ${PLAYER_SERVICE_URL:http://localhost:8081}
+  tournament-service:
+    url: ${TOURNAMENT_SERVICE_URL:http://localhost:8082}
+  ranking-service:
+    url: ${RANKING_SERVICE_URL:http://localhost:8083}
+
+jwt:
+  secret: ${JWT_SECRET:supersecretkey_changeinproduction_minimum256bits!!}
