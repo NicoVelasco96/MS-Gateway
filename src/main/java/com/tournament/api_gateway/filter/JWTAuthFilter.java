@@ -29,7 +29,8 @@ public class JWTAuthFilter extends OncePerRequestFilter {
             "/api/docs",
             "/v3/api-docs",
             "/swagger-ui",
-            "/webjars"
+            "/webjars",
+            "/health"
     );
 
     @Override
