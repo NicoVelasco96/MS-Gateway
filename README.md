@@ -113,7 +113,7 @@ El gateway no expone endpoints propios — redirige todos los requests a los mic
 # Login (público)
 POST http://localhost:8080/api/players/login
 {
-  "username": "NiicoV96",
+  "username": "tunickname",
   "password": "tupassword"
 }
 
@@ -279,7 +279,7 @@ The gateway does not expose its own endpoints — it forwards all requests to th
 # Login (public)
 POST http://localhost:8080/api/players/login
 {
-  "username": "NiicoV96",
+  "username": "yournickname",
   "password": "yourpassword"
 }
 
