@@ -4,22 +4,6 @@ server:
 spring:
   application:
     name: api-gateway
-  cloud:
-    gateway:
-      mvc:
-        routes:
-          - id: player-service
-            uri: ${PLAYER_SERVICE_URL:http://localhost:8081}
-            predicates:
-              - Path=/api/players/**
-          - id: tournament-service
-            uri: ${TOURNAMENT_SERVICE_URL:http://localhost:8082}
-            predicates:
-              - Path=/api/tournaments/**
-          - id: ranking-service
-            uri: ${RANKING_SERVICE_URL:http://localhost:8083}
-            predicates:
-              - Path=/api/rankings/**
 
 services:
   player-service:
