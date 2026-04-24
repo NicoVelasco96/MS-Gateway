@@ -26,6 +26,22 @@ public class GatewayConfig {
     @Value("${services.ranking-service.url}")
     private String rankingServiceUrl;
 
+    @Value("${services.payment-service.url}")
+    private String paymentServiceUrl;
+
+    @Bean
+    public RouterFunction<ServerResponse> paymentRoutes() {
+        return GatewayRouterFunctions.route("payment-service")
+                .route(path("/api/payments/**"), HandlerFunctions.http())
+                .before(BeforeFilterFunctions.routeId("payment-service"))
+                .before(request -> {
+                    request.attributes().put(MvcUtils.GATEWAY_REQUEST_URL_ATTR,
+                            URI.create(paymentServiceUrl + request.uri().getRawPath()));
+                    return request;
+                })
+                .build();
+    }
+
     @Bean
     public RouterFunction<ServerResponse> playerRoutes() {
         return GatewayRouterFunctions.route("player-service")

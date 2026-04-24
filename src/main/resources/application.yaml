@@ -12,6 +12,8 @@ services:
     url: ${TOURNAMENT_SERVICE_URL:http://localhost:8082}
   ranking-service:
     url: ${RANKING_SERVICE_URL:http://localhost:8083}
+  payment-service:
+    url: ${PAYMENT_SERVICE_URL:http://localhost:8084}
 
 jwt:
   secret: ${JWT_SECRET:supersecretkey_changeinproduction_minimum256bits!!}
